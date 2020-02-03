@@ -1,0 +1,29 @@
+﻿  main.cpp
+c:\school stuff\tictactoe\raygame\main.cpp(200): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(245): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(245): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(246): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(246): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(247): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(247): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(248): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(248): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(320): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(321): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(326): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(387): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(387): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(388): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(388): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(389): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(389): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(390): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(390): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(391): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(391): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(392): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(392): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(393): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(393): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\school stuff\tictactoe\raygame\main.cpp(154): warning C4101: 'BoardSize': unreferenced local variable
+  raygame.vcxproj -> C:\School Stuff\TicTacToe\x64\Debug\raygame.exe

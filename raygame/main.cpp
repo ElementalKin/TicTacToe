@@ -15,66 +15,130 @@ struct Button
 //Makes a random color
 Color randomColor()
 {
-	Color SeizureMaker = { rand() % 256,rand() % 256 ,rand() % 256 ,rand() % 256 };
-	return SeizureMaker;
+	//made this for fun.
+	//Color SeizureMaker = { rand() % 256,rand() % 256 ,rand() % 256 ,rand() % 256 };
+	//return SeizureMaker;
+	return BLACK;
 }
 
 
-int checkIfWon(int gameBoard[3][3])
+int checkIfWon(int** gameBoard, int boardSize)
 {
-	if (gameBoard[0][0] == 1 && gameBoard[0][1] == 1 && gameBoard[0][2] == 1) {
-		return 1;
-	}
-	else if (gameBoard[1][0] == 1 && gameBoard[1][1] == 1 && gameBoard[1][2] == 1) {
-		return 1;
-	}
-	else if (gameBoard[2][0] == 1 && gameBoard[2][1] == 1 && gameBoard[2][2] == 1) {
-		return 1;
-	}
-	else if (gameBoard[0][0] == 1 && gameBoard[1][0] == 1 && gameBoard[2][0] == 1) {
-		return 1;
-	}
-	else if (gameBoard[0][1] == 1 && gameBoard[1][1] == 1 && gameBoard[2][1] == 1) {
-		return 1;
-	}
-	else if (gameBoard[0][2] == 1 && gameBoard[1][2] == 1 && gameBoard[2][2] == 1) {
-		return 1;
-	}
-	else if (gameBoard[0][0] == 1 && gameBoard[1][1] == 1 && gameBoard[2][2] == 1) {
-		return 1;
-	}
-	else if (gameBoard[0][2] == 1 && gameBoard[1][1] == 1 && gameBoard[2][0] == 1) {
-		return 1;
-	}
-
-	if (gameBoard[0][0] == 2 && gameBoard[0][1] == 2 && gameBoard[0][2] == 2) {
-		return 2;
-	}
-	else if (gameBoard[1][0] == 2 && gameBoard[1][1] == 2 && gameBoard[1][2] == 2) {
-		return 2;
-	}
-	else if (gameBoard[2][0] == 2 && gameBoard[2][1] == 2 && gameBoard[2][2] == 2) {
-		return 2;
-	}
-	else if (gameBoard[0][0] == 2 && gameBoard[1][0] == 2 && gameBoard[2][0] == 2) {
-		return 2;
-	}
-	else if (gameBoard[0][1] == 2 && gameBoard[1][1] == 2 && gameBoard[2][1] == 2) {
-		return 2;
-	}
-	else if (gameBoard[0][2] == 2 && gameBoard[1][2] == 2 && gameBoard[2][2] == 2) {
-		return 2;
-	}
-	else if (gameBoard[0][0] == 2 && gameBoard[1][1] == 2 && gameBoard[2][2] == 2) {
-		return 2;
-	}
-	else if (gameBoard[0][2] == 2 && gameBoard[1][1] == 2 && gameBoard[2][0] == 2) {
-		return 2;
-	}
-	if(gameBoard[0][0] != 0 && gameBoard[0][1] != 0 && gameBoard[0][2] != 0 && gameBoard[1][0] != 0 && gameBoard[1][1] != 0 && gameBoard[1][2] != 0 && gameBoard[2][0] != 0 && gameBoard[2][1] != 0 && gameBoard[2][2] != 0)
+	int playerOneScore = 0;
+	int playerTwoScore = 0;
+	int stalemate = 0;
+	//checking if the players have three in a row.
+	for (int i = 0; i < boardSize; ++i)
 	{
-		return 3;
+		//checks colums for player one.
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (gameBoard[x][i] == 1) { playerOneScore++; }
+			else if (gameBoard[x][i] == 2 || 0) { playerOneScore = 0; }
+			if (playerOneScore == 3) { return 1; }
+		}
+	    playerOneScore = 0;
+		//checks rows for player one.
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (gameBoard[i][x] == 1) { playerOneScore++; }
+			else if (gameBoard[i][x] == 2 || 0) { playerOneScore = 0; }
+			if (playerOneScore == 3) { return 1; }
+		}
+		playerOneScore = 0; 
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (x + i < boardSize) {
+				if (gameBoard[x + i][x] == 1) { playerOneScore++; }
+				else if (gameBoard[x + i][x] == 2 || 0) { playerOneScore = 0; }
+				if (playerOneScore == 3) { return 1; }
+			}
+		}
+		playerOneScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (x + i < boardSize) {
+				if (gameBoard[x][x+i] == 1) { playerOneScore++; }
+				else if (gameBoard[x][x+i] == 2 || 0) { playerOneScore = 0; }
+				if (playerOneScore == 3) { return 1; }
+			}
+		}
+		playerOneScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (x + i < boardSize) {
+				if (gameBoard[x][(boardSize - (x + i)) - 1] == 1) { playerOneScore++; }
+				else if (gameBoard[x][(boardSize - (x + i)) - 1] == 2 || 0) { playerOneScore = 0; }
+				if (playerOneScore == 3) { return 1; }
+			}
+		}
+		playerOneScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (x + i < boardSize) {
+				if (gameBoard[x+i][(boardSize - (x )) - 1] == 1) { playerOneScore++; }
+				else if (gameBoard[x+i][(boardSize - (x)) - 1] == 2 || 0) { playerOneScore = 0; }
+				if (playerOneScore == 3) { return 1; }
+			}
+		}
+		playerOneScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (gameBoard[i][x] == 2) { playerTwoScore++; }
+			else if (gameBoard[i][x] == 1 || 0) { playerTwoScore = 0; }
+			if (playerTwoScore == 3) { return 2; }
+		}
+		playerTwoScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (gameBoard[x][i] == 2) { playerTwoScore++; }
+			else if (gameBoard[x][i] == 1 || 0) { playerTwoScore = 0; }
+			if (playerTwoScore == 3) { return 2; }
+		}
+		playerTwoScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (x + i < boardSize) {
+				if (gameBoard[x + i][x] == 2) { playerTwoScore++; }
+				else if (gameBoard[x + i][x] == 1 || 0) { playerTwoScore = 0; }
+				if (playerTwoScore == 3) { return 2; }
+			}
+		}
+		playerTwoScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (x + i < boardSize) {
+				if (gameBoard[x ][x+i] == 2) { playerTwoScore++; }
+				else if (gameBoard[x][x+i] == 1 || 0) { playerTwoScore = 0; }
+				if (playerTwoScore == 3) { return 2; }
+			}
+		}
+		playerTwoScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (x + i < boardSize) {
+				if (gameBoard[x][boardSize - (x + i) - 1] == 2) { playerTwoScore++; }
+				else if (gameBoard[x][boardSize - (x + i) - 1] == 1 || 0) { playerTwoScore = 0; }
+				if (playerTwoScore == 3) { return 2; }
+			}
+		}
+		playerTwoScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (x + i < boardSize) {
+				if (gameBoard[x+i][boardSize - (x) - 1] == 2) { playerTwoScore++; }
+				else if (gameBoard[x+i][boardSize - (x) - 1] == 1 || 0) { playerTwoScore = 0; }
+				if (playerTwoScore == 3) { return 2; }
+			}
+		}
+		playerTwoScore = 0;
+		for (int x = 0; x < boardSize; ++x)
+		{
+			if (gameBoard[i][x] == 0) { stalemate++; }
+		}
+
 	}
+	if (stalemate == 0) { return 3; }
 	return 0;
 }
 
@@ -83,34 +147,57 @@ int checkIfWon(int gameBoard[3][3])
 
 int main()
 {
+
 	//variables for the game to work.
 	int turns = 1;
-	bool screenSizeChosen = false;
+	bool boardSizeChosen = false;
 	//the game board and who is currently where.
-	int gameBoard[3][3] = { { 0,0,0 }, {0,0,0}, {0,0,0} };
+	
+	int BoardSize;
 	int player1Score = 0;
 	int player2Score = 0;
 	int stalemate = 0;
 	//the bounding boxes for the board.
-	Rectangle TicTacToeBoundingBox[3][3];
+
 	
 	const int numberOfButtons = 2;
 	Button buttons[numberOfButtons];
 	int startGame = 0;
-	int screenSize;
-	//Ask the player for a size so that it sizes the window to the right amount.
-	std::cout << "Please Enter a Number between 4 and 10." << std::endl;
-	while (screenSizeChosen == false)
+	int boardSize;
+	int screenSize = 1000;
+	//Ask the player for a size so that it sizes the board to the right size.
+	std::cout << "Please Enter a Number between 3 and 8." << std::endl;
+	while (boardSizeChosen == false)
 	{
-		std::cin >> screenSize;
-		if (screenSize >= 4 && 10 >= screenSize)
+		std::cin >> boardSize;
+		if (boardSize >= 3 && 8 >= boardSize)
 		{
-			screenSizeChosen = true;
+
+			boardSizeChosen = true;
 			break;
 		}
 		std::cout << "I said Enter a Number between 4 and 10." << std::endl;
 	}
-	screenSize = screenSize * 100;
+
+	int* board_data = new int[boardSize*boardSize];
+	int** board = new int*[boardSize];
+	for (int i = 0; i < boardSize; ++i) 
+	{
+		board[i] = board_data + boardSize * i;
+	}
+	for (int i = 0; i < boardSize; i++)
+	{
+		for (int x = 0; x < boardSize; x++)
+		{
+			board[i][x] = 0;
+		}
+	}
+	Rectangle* boundingBox_data = new Rectangle[boardSize*boardSize];
+	Rectangle** TTTBoundingBox = new Rectangle*[boardSize];
+	for (int i = 0; i < boardSize; ++i)
+	{
+		TTTBoundingBox[i] = boundingBox_data + boardSize * i;
+	}
 
 	float buttonScale = screenSize / 400;
 
@@ -133,15 +220,16 @@ int main()
 	//Getting the mouse position(probably not needed but I ran into  problem at some point and tried this and never reverted it.)
 	Vector2 mousePoint = GetMousePosition();
 	//making the hit boxes
-	TicTacToeBoundingBox[0][0] = { float(screenSize*.1), float(screenSize*.1), float(screenSize*.24) , float(screenSize*.24)};
-	TicTacToeBoundingBox[0][1] = { float(screenSize*.34), float(screenSize*.1), float(screenSize*.26) , float(screenSize*.24) };
-	TicTacToeBoundingBox[0][2] = { float(screenSize*.60), float(screenSize*.1), float(screenSize*.25) , float(screenSize*.24) };
-	TicTacToeBoundingBox[1][0] = { float(screenSize*.1), float(screenSize*.34), float(screenSize*.24) , float(screenSize*.26) };
-	TicTacToeBoundingBox[1][1] = { float(screenSize*.34), float(screenSize*.34), float(screenSize*.26) , float(screenSize*.26) };
-	TicTacToeBoundingBox[1][2] = { float(screenSize*.60), float(screenSize*.34), float(screenSize*.25) , float(screenSize*.26) };
-	TicTacToeBoundingBox[2][0] = { float(screenSize*.1), float(screenSize*.60), float(screenSize*.24) , float(screenSize*.25) };
-	TicTacToeBoundingBox[2][1] = { float(screenSize*.34), float(screenSize*.60), float(screenSize*.26) , float(screenSize*.25) };
-	TicTacToeBoundingBox[2][2] = { float(screenSize*.60), float(screenSize*.60), float(screenSize*.25) , float(screenSize*.25) };
+	for (int x = 0; x < boardSize; x++) 
+	{
+		for (int i = 0; i < boardSize; i++)
+		{
+			if(i == 0 && x == 0){ TTTBoundingBox[x][i] = { float((screenSize*.01)), float(screenSize*(.1)), float(screenSize/(boardSize+ 1)) , float(screenSize / (boardSize+ 1)) }; }
+			else if (i == 0) { TTTBoundingBox[x][i] = { float((screenSize*.01)), float(screenSize/(boardSize+ 1) + TTTBoundingBox[x - 1][0].y), float(screenSize / (boardSize+ 1)) , float(screenSize / (boardSize+1)) }; }
+			else { TTTBoundingBox[x][i] = { TTTBoundingBox[x][i-1].x + TTTBoundingBox[x][i - 1].width, float(TTTBoundingBox[x][0].y), float(screenSize / (boardSize + 1)) , float(screenSize / (boardSize + 1)) }; }
+
+		}
+	}
 
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
@@ -152,98 +240,99 @@ int main()
 		if (startGame == 1)
 		{
 			//Drawing the game board and the scores
-			DrawRectangleLines(screenSize*.1, screenSize * .1, screenSize * .75, screenSize * .75, BLACK);
-			DrawLine(screenSize*.1, screenSize*.34, screenSize*.85, screenSize*.34, BLACK);
-			DrawLine(screenSize*.1, screenSize*.60, screenSize*.85, screenSize*.60, BLACK);
-			DrawLine(screenSize*.34, screenSize*.1, screenSize*.34, screenSize*.85, BLACK);
-			DrawLine(screenSize*.60, screenSize*.1, screenSize*.60, screenSize*.85, BLACK);
+			for (int x = 0; x < boardSize ; x++) 
+			{
+				for (int i = 0; i < boardSize; i++) {DrawRectangleLinesEx(TTTBoundingBox[x][i], 1, BLACK);}
+			}
 			DrawText(FormatText("Player1: %01i",  player1Score), screenSize * .01, 0, buttonScale * 10, randomColor());
 			DrawText(FormatText("Player2: %01i", player2Score), screenSize * .75, 0, buttonScale * 10, randomColor());
 			DrawText(FormatText("Turn: %01i", turns), screenSize * .35, 0, buttonScale * 10, randomColor());
-			DrawText(FormatText("Stalemate: %01i", stalemate), screenSize * .35, screenSize * .03, buttonScale * 10, randomColor());
+			DrawText(FormatText("Stalemate: %01i", stalemate), screenSize * .35, screenSize * .03, buttonScale * 10, randomColor()); 
 
-			for (int i = 0; i < 3; i++)
+			for (int i = 0; i < boardSize; i++)
 			{
-				for (int x = 0; x < 3; x++) 
+				for (int x = 0; x < boardSize; x++) 
 				{
-					//Chekcing the size of the boxes to make them the same size as the board.
-					//DrawRectangleLinesEx(TicTacToeBoundingBox[i][x], 1, randomColors[GetRandomValue(0, 10)]);
-
-					//draws the xs(player 1)
-					if (gameBoard[i][x] == 1)
+					//checks if the left button is pressed.
+					if (IsMouseButtonPressed(0))
 					{
-						DrawLine(TicTacToeBoundingBox[i][x].x, TicTacToeBoundingBox[i][x].y, TicTacToeBoundingBox[i][x].x + TicTacToeBoundingBox[i][x].width, TicTacToeBoundingBox[i][x].y + TicTacToeBoundingBox[i][x].height, BLACK);
-						DrawLine(TicTacToeBoundingBox[i][x].x + TicTacToeBoundingBox[i][x].width, TicTacToeBoundingBox[i][x].y, TicTacToeBoundingBox[i][x].x, TicTacToeBoundingBox[i][x].y + TicTacToeBoundingBox[i][x].height, BLACK);
-					}
-					//Draws the circles(player 2)
-					if (gameBoard[i][x] == 2)
-					{
-						DrawCircleLines(TicTacToeBoundingBox[i][x].x + TicTacToeBoundingBox[i][x].width / 2, TicTacToeBoundingBox[i][x].y + TicTacToeBoundingBox[i][x].height / 2, screenSize*.12, BLACK);
-					}
-
-					//checking if the mouse is in any of the boxes
-					if (CheckCollisionPointRec(mousePoint, TicTacToeBoundingBox[i][x]))
-					{
-						//checks if the left button is pressed. (I should revers this but i don't have time right now)
-						if (IsMouseButtonPressed(0))
+						//checking if the mouse is in any of the boxes
+						if (CheckCollisionPointRec(mousePoint, TTTBoundingBox[i][x]))
 						{
 							//check whos turn it is.
 							if (turns == 1)
 							{
 								//checks if the box is open
-								if (gameBoard[i][x] == 0)
+								if (board[i][x] == 0)
 								{
 									//if it is it makes it to who ever turn it is to the box then 
-									gameBoard[i][x] = 1;
+									board[i][x] = 1;
 									turns = 2;
 								}
 							}
 							else if (turns == 2)
 							{
-								if (gameBoard[i][x] == 0)
+								if (board[i][x] == 0)
 								{
-									gameBoard[i][x] = 2;
+									board[i][x] = 2;
 									turns = 1;
 								}
 							}
+							//checks if someone has won
+							if (checkIfWon(board, boardSize) == 1)
+							{
+								player1Score++;
+								for (int i = 0; i < boardSize; i++)
+								{
+									for (int x = 0; x < boardSize; x++)
+									{
+										board[i][x] = 0;
+									}
+								}
+							}
+							else if (checkIfWon(board, boardSize) == 2)
+							{
+								player2Score++;
+								for (int i = 0; i < boardSize; i++)
+								{
+									for (int x = 0; x < boardSize; x++)
+									{
+										board[i][x] = 0;
+									}
+								}
+							}
+							else if (checkIfWon(board, boardSize) == 3)
+							{
+								stalemate++;
+								for (int i = 0; i < boardSize; i++)
+								{
+									for (int x = 0; x < boardSize; x++)
+									{
+										board[i][x] = 0;
+									}
+								}
+							}
+
 						}
 					}
-				}
-			}
-			//checks who if someone has won
-			if(checkIfWon(gameBoard) == 1)
-			{
-				player1Score++;
-				for(int i = 0; i < 3; i++)
-				{
-					for(int x = 0; x < 3; x++)
+
+					//draws the xs(player 1)
+					if (board[i][x] == 1)
 					{
-						gameBoard[i][x] = 0;
+						DrawLine(TTTBoundingBox[i][x].x, TTTBoundingBox[i][x].y, TTTBoundingBox[i][x].x + TTTBoundingBox[i][x].width, TTTBoundingBox[i][x].y + TTTBoundingBox[i][x].height, BLACK);
+						DrawLine(TTTBoundingBox[i][x].x + TTTBoundingBox[i][x].width, TTTBoundingBox[i][x].y, TTTBoundingBox[i][x].x, TTTBoundingBox[i][x].y + TTTBoundingBox[i][x].height, BLACK);
 					}
-				}
-			}
-			else if (checkIfWon(gameBoard) == 2)
-			{
-				player2Score++;
-				for (int i = 0; i < 3; i++)
-				{
-					for (int x = 0; x < 3; x++)
+					//Draws the circles(player 2)
+					if (board[i][x] == 2)
 					{
-						gameBoard[i][x] = 0;
+						DrawCircleLines(TTTBoundingBox[i][x].x + TTTBoundingBox[i][x].width / 2, TTTBoundingBox[i][x].y + TTTBoundingBox[i][x].height / 2, TTTBoundingBox[i][x].width/2, BLACK);
 					}
+
+
+
 				}
 			}
-			else if (checkIfWon(gameBoard) == 3)
-			{
-				stalemate++;
-				for (int i = 0; i < 3; i++)
-				{
-					for (int x = 0; x < 3; x++)
-					{
-						gameBoard[i][x] = 0;
-					}
-				}
-			}
+
 		}
 		//checks if start game is zero so that i have some way to switch from the main menu to the game board.
 		if (startGame == 0)
@@ -318,9 +407,7 @@ int main()
 		EndDrawing();
 	}
 
-
 	CloseWindow();
-
 	return 0;
 
 }
